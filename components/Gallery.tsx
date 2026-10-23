@@ -28,7 +28,7 @@ export default function Gallery({ tiles }: { tiles: Tile[] }) {
 
   return (
     <>
-      <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-4 md:grid-rows-2">
+      <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 md:auto-rows-[260px] md:grid-cols-4">
         {tiles.map((t, i) => {
           const base = `${t.cls} relative overflow-hidden rounded-2xl shadow-soft`;
           if (!t.src)

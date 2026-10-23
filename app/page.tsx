@@ -14,8 +14,7 @@ const section = "px-5 py-16 md:py-24";
 
 const tiles = [
   { cls: "col-span-2 aspect-[4/3] md:col-span-2 md:row-span-2 md:aspect-auto", src: "/beanbags.png", alt: "Bean bags and low tables on the lawn at dusk, with the cafe lit up behind" },
-  { cls: "aspect-square bg-clay" },
-  { cls: "aspect-square bg-crema" },
+  { cls: "col-span-2 aspect-[2/1] md:aspect-auto", src: "/interior.png", alt: "The glass-walled dining room at dusk, with tables facing the valley view" },
   { cls: "col-span-2 aspect-[2/1] md:aspect-auto", src: "/night-view.png", alt: "Lit A-frame cabins and the terrace at night" },
 ];
 
@@ -103,14 +102,19 @@ export default function Home() {
         <section id="reviews" className={`${section} bg-bark text-milk`}>
           <div className="mx-auto max-w-6xl">
             <h2 className={h2}>Kind words</h2>
+            <p className="mt-3 text-milk/70">What guests say on Google.</p>
             <div className="-mx-5 mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0">
-              {reviews.map((r, i) => (
-                <figure key={i} className="w-[82%] shrink-0 snap-center rounded-2xl bg-milk/10 p-7 ring-1 ring-milk/15 md:w-auto">
-                  <blockquote className="font-display text-xl leading-snug">{r.quote}</blockquote>
-                  <figcaption className="mt-4 text-sm text-milk/70">{r.who}</figcaption>
+              {reviews.map((r) => (
+                <figure key={r.who} className="flex w-[85%] shrink-0 snap-center flex-col rounded-2xl bg-milk/10 p-7 ring-1 ring-milk/15 md:w-auto">
+                  <div className="text-xl tracking-widest text-[#f2b84b]" role="img" aria-label={`${r.stars} out of 5 stars`}>
+                    {"★".repeat(r.stars)}<span className="text-milk/25">{"★".repeat(5 - r.stars)}</span>
+                  </div>
+                  <blockquote className="mt-3 flex-1 font-display text-lg leading-snug">“{r.quote}”</blockquote>
+                  <figcaption className="mt-5 text-sm text-milk/70">{r.who}, on Google</figcaption>
                 </figure>
               ))}
             </div>
+            <a href={site.mapsUrl} target="_blank" rel="noreferrer" className={`${btn} mt-4 bg-milk text-bark shadow-soft`}>Read more on Google Maps</a>
           </div>
         </section>
 

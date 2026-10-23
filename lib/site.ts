@@ -61,11 +61,26 @@ export const happenings: Happening[] = [
   },
 ];
 
-// PLACEHOLDER reviews: replace with real Google/Facebook reviews.
+// Real Google reviews. Quotes are verbatim; "…" marks where text was trimmed.
 export const reviews = [
-  { quote: "Replace with a real customer review from Google Maps.", who: "Customer name" },
-  { quote: "Replace with a real customer review from Facebook.", who: "Customer name" },
-  { quote: "Replace with a real customer review.", who: "Customer name" },
+  {
+    quote:
+      "There’s something special about watching the sun melt away from the ridge at Dwena's Cafe. The outdoor seating is genius—you get a front-row seat to nature's show. … As night falls, the cafe transforms with festive lights and a cool breeze.",
+    who: "Jay J",
+    stars: 5,
+  },
+  {
+    quote:
+      "dining here was top of the experience, they accommodate to the very extent possible … perfect combo for food, music, nature and most people working here are top",
+    who: "Aqua “Jona”",
+    stars: 5,
+  },
+  {
+    quote:
+      "Dwenas Café in Sto. Tomas, Batangas is truly a great place to unwind and enjoy good food. They offer a wide variety of dishes, all delicious and perfect for casual dining with family or friends. … One of the best highlights is the breathtaking view, making every meal feel extra relaxing and memorable.",
+    who: "Nelson Alvero",
+    stars: 4,
+  },
 ];
 
 export type Price = { label?: string; value: number };
