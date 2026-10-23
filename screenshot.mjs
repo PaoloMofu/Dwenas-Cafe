@@ -1,0 +1,17 @@
+import puppeteer from "puppeteer";
+import fs from "node:fs";
+const [url, label] = process.argv.slice(2).filter(a => !a.startsWith("--"));
+const full = process.argv.includes("--full");
+const w = +(process.argv.find(a => a.startsWith("--width="))?.split("=")[1] ?? 1440);
+const h = +(process.argv.find(a => a.startsWith("--height="))?.split("=")[1] ?? 900);
+fs.mkdirSync("temporary screenshots", { recursive: true });
+const n = fs.readdirSync("temporary screenshots").filter(f => f.startsWith("screenshot-")).length + 1;
+const b = await puppeteer.launch();
+const p = await b.newPage();
+await p.setViewport({ width: w, height: h });
+await p.goto(url, { waitUntil: "networkidle2" });
+await new Promise(r => setTimeout(r, 1500));
+const out = `temporary screenshots/screenshot-${n}${label ? "-" + label : ""}.png`;
+await p.screenshot({ path: out, fullPage: full });
+await b.close();
+console.log(out);
