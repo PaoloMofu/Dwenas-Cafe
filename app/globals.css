@@ -58,3 +58,23 @@ h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.03em; line-hei
 .logo-float { animation: logo-float 6s ease-in-out 1.3s infinite; }
 .logo-tilt { transition: transform .25s ease-out; will-change: transform; }
 .logo-glow { filter: drop-shadow(0 18px 28px rgba(0,0,0,.45)) drop-shadow(0 0 26px rgba(255,190,90,.35)); }
+
+/* Splash: logo shows first on every load, then fades away. transform/opacity only. */
+.splash {
+  position: fixed; inset: 0; z-index: 100; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 2rem; background: var(--color-milk);
+  animation: splash-out .7s ease-in 1.9s forwards;
+}
+.splash-logo {
+  width: min(62vw, 320px); height: auto; mix-blend-mode: multiply;
+  animation: logo-in 1s var(--ease-spring) .1s both;
+}
+.splash-bar {
+  width: 120px; height: 3px; border-radius: 3px; background: rgba(58,33,18,.15); position: relative; overflow: hidden;
+}
+.splash-bar::after {
+  content: ""; position: absolute; inset: 0; background: var(--color-clay);
+  transform-origin: left; animation: splash-fill 1.9s ease-in-out both;
+}
+@keyframes splash-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes splash-out { to { opacity: 0; visibility: hidden; } }

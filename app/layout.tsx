@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Figtree } from "next/font/google";
 import "./globals.css";
+import Splash from "@/components/Splash";
 
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", axes: ["opsz", "SOFT"] });
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-figtree" });
@@ -15,7 +16,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${figtree.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Splash />
+        {children}
+      </body>
     </html>
   );
 }
